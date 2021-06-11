@@ -1,11 +1,14 @@
 import React, { useState } from "react";
 import "./ColorForm.css";
+import { useHistory } from "react-router-dom";
 
 const ColorForm = ({ addColor }) => {
   const INIT_STATE = {
     name: "",
     colorVal: "#ffffff",
   };
+  let history = useHistory();
+
   const [formData, setFormData] = useState(INIT_STATE);
   const handleChange = (evt) => {
     const { name, value } = evt.target;
@@ -18,6 +21,7 @@ const ColorForm = ({ addColor }) => {
     evt.preventDefault();
     addColor(formData);
     setFormData(INIT_STATE);
+    history.push("/colors");
   };
   return (
     <div className="ColorForm">

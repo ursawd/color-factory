@@ -3,13 +3,7 @@ import Color from "./Color";
 import ColorForm from "./ColorForm";
 import Colors from "./Colors";
 import React, { useState } from "react";
-import {
-  Route,
-  Switch,
-  BrowserRouter,
-  Redirect,
-  useHistory,
-} from "react-router-dom";
+import { Route, Switch, BrowserRouter, Redirect } from "react-router-dom";
 
 function App(props) {
   const initColors = [
@@ -18,13 +12,9 @@ function App(props) {
     { name: "blue", colorVal: "#0000ff" },
   ];
   const [picked, setPicked] = useState(initColors);
-  let history = useHistory();
-  console.log("history", history);
 
   const addColor = (colorInfo) => {
     setPicked((picked) => [colorInfo, ...picked]);
-
-    history.push("/colors");
   };
   const renderCurrentColor = (props) => {
     const colorName = props.match.params.color;
